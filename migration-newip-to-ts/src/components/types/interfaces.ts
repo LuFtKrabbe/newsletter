@@ -11,3 +11,12 @@ export interface DataNews {
         }[]
     ): void;
 }
+
+export interface DataSource {
+    draw(
+        data: {
+            id: string;
+            name: string;
+        }[]
+    ): void;
+}
