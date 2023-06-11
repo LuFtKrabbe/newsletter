@@ -35,6 +35,7 @@ export interface DataAppView {
             }[]
         ): void;
     };
+
     sources: {
         draw(
             data: {
@@ -47,4 +48,18 @@ export interface DataAppView {
     drawNews(data: { articles: [] }): void;
 
     drawSources(data: { sources: [] }): void;
+}
+
+export type Options = {
+    sources?: string;
+};
+
+export interface DataLoader {
+    baseLink: string;
+    options: Record<string, string>;
+
+    getResp({ endpoint, options = {} }: { endpoint: string; options: Options }): void;
+    errorHandler(res: Response): Response;
+    makeUrl(options: Record<string, string>, endpoint: string): string;
+    load<T>(method: string, endpoint: string, callback: (data: T) => void, options: Options): void;
 }
