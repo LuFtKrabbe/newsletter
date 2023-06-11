@@ -30,12 +30,12 @@ export class AppView implements DataAppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: { articles: [] }) {
+    drawNews(data: { articles: [] } | undefined) {
         const values = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data: { sources: [] }) {
+    drawSources(data: { sources: [] } | undefined) {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }

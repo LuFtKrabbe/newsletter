@@ -45,9 +45,8 @@ export interface DataAppView {
         ): void;
     };
 
-    drawNews(data: { articles: [] }): void;
-
-    drawSources(data: { sources: [] }): void;
+    drawNews(data: { articles: [] } | undefined): void;
+    drawSources(data: { sources: [] } | undefined): void;
 }
 
 export type Options = {
@@ -67,4 +66,15 @@ export interface DataLoader {
 export interface DataAppController {
     getSources(callback: () => void): void;
     getNews(e: Event, callback: () => void): void;
+}
+
+export interface DataApp {
+    controller: {
+        getSources(callback: () => void): void;
+        getNews(e: Event, callback: () => void): void;
+    };
+    view: {
+        drawNews(data: { articles: [] } | undefined): void;
+        drawSources(data: { sources: [] } | undefined): void;
+    };
 }
