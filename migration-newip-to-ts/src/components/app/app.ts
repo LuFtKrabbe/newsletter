@@ -20,7 +20,9 @@ class App implements DataApp {
     start() {
         const sources: HTMLElement | null = document.querySelector('.sources');
         if (sources) {
-            sources.addEventListener('click', (e) => this.controller.getNews(e, (data?: { articles: [] } | undefined) => this.view.drawNews(data)));
+            sources.addEventListener('click', (e) =>
+                this.controller.getNews(e, (data?: { articles: [] } | undefined) => this.view.drawNews(data))
+            );
             this.controller.getSources((data?: { sources: [] } | undefined) => this.view.drawSources(data));
         }
     }
