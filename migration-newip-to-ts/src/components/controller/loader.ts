@@ -11,7 +11,7 @@ class Loader implements DataLoader {
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options: Options },
+        { endpoint, options = {} }: { endpoint: string; options?: Options },
         callback = () => {
             console.error('No callback for GET response');
         }

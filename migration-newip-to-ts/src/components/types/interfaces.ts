@@ -63,3 +63,8 @@ export interface DataLoader {
     makeUrl(options: Record<string, string>, endpoint: string): string;
     load<T>(method: string, endpoint: string, callback: (data: T) => void, options: Options): void;
 }
+
+export interface DataAppController {
+    getSources(callback: () => void): void;
+    getNews(e: Event, callback: () => void): void;
+}
