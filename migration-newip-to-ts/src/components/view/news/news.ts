@@ -2,6 +2,7 @@ import './news.css';
 import { DataNews } from '../../types/interfaces';
 import type { DataNewsType } from '../../types/interfaces';
 import { isNotNull } from '../utils';
+import placeholder from '../../../img/placeholder/placeholder.png';
 
 enum ENUM_NEWS_ELEM {
     photo = '.news__meta-photo',
@@ -46,7 +47,7 @@ class News implements DataNews {
                 isNotNull(read) &&
                 isNotNull(date)
             ) {
-                photo.style.backgroundImage = `url(${<string>item.urlToImage || 'img/news_placeholder.jpg'})`;
+                photo.style.backgroundImage = `url(${<string>item.urlToImage || placeholder})`;
                 author.textContent = <string>item.author || <string>item.source.name;
                 title.textContent = <string>item.title;
                 source.textContent = <string>item.source.name;
