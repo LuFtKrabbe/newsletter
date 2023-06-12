@@ -1,26 +1,21 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import { DataApp } from '../types/interfaces';
+import { isNotNull } from '../view/utils';
 
 class App implements DataApp {
-    controller: {
-        getSources(callback: () => void): void;
-        getNews(e: Event, callback: () => void): void;
-    };
-    view: {
-        drawNews(data: { articles: [] } | undefined): void;
-        drawSources(data: { sources: [] } | undefined): void;
-    };
+    private controller: AppController;
+    private view: AppView;
 
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start() {
+    public start(): void {
         const sources: HTMLElement | null = document.querySelector('.sources');
-        if (sources) {
-            sources.addEventListener('click', (e) =>
+        if (isNotNull(sources)) {
+            sources.addEventListener('click', (e: MouseEvent) =>
                 this.controller.getNews(e, (data?: { articles: [] } | undefined) => this.view.drawNews(data))
             );
             this.controller.getSources((data?: { sources: [] } | undefined) => this.view.drawSources(data));

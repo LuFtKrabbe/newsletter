@@ -1,14 +1,11 @@
 import './sources.css';
 import { DataSource } from '../../types/interfaces';
+import { DataSourceType } from '../../types/interfaces';
+import { isNotNull } from '../utils';
 
 class Sources implements DataSource {
-    draw(
-        data: {
-            id: string;
-            name: string;
-        }[]
-    ) {
-        const fragment = document.createDocumentFragment();
+    public draw(data: DataSourceType[]) {
+        const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
         data.forEach((item) => {
@@ -17,9 +14,9 @@ class Sources implements DataSource {
             const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
             const sourceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
 
-            if (sourceItemName && sourceItem) {
-                sourceItemName.textContent = item.name;
-                sourceItem.setAttribute('data-source-id', item.id);
+            if (isNotNull(sourceItemName) && isNotNull(sourceItem)) {
+                sourceItemName.textContent = <string>item.name;
+                sourceItem.setAttribute('data-source-id', <string>item.id);
             } else {
                 throw Error('Element in the sources not found');
             }
@@ -29,7 +26,7 @@ class Sources implements DataSource {
 
         const sources: HTMLElement | null = document.querySelector('.sources');
 
-        if (sources) {
+        if (isNotNull(sources)) {
             sources.append(fragment);
         } else {
             throw Error('Element in the sources not found');
