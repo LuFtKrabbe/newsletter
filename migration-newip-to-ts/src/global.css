@@ -37,12 +37,14 @@ main {
 }
 
 footer {
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 footer .copyright {
+    margin: 0px;
     font-size: 14px;
     color: #333;
     text-align: center;
@@ -56,3 +58,30 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+
+footer .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .luftkrabbe {
+    display: block;
+    height: 30px;
+    width: 38px;
+    background: center / contain no-repeat url('./img/luftkrabbe.png');
+}
+
+footer .logo {
+    display: block;
+    height: 30px;
+    width: 50px;
+    background: center / contain no-repeat url('./img/logoRSS.png');
+}
+
+footer .year {
+    margin: 0 7px;
+    color: #444444;
+    font-weight: 700;
+}
+
